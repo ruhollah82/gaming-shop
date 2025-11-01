@@ -1,6 +1,6 @@
 import Slider from "../components/Slider";
 import ProductList from "../components/ProductList";
-import GameStoreBanner from "@/components/Banner";
+import GameStoreBanner from "@/components/Banner/Banner";
 
 export default function HomePage() {
   return (

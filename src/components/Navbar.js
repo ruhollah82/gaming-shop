@@ -37,7 +37,7 @@ export default function StickyNavbar() {
       transition={{ type: "spring", stiffness: 200, damping: 25 }}
       className={clsx(
         "fixed left-0 w-full z-40 backdrop-blur-md bg-neutral-900/80 text-white shadow-md transition-all",
-        atTop ? "top-[40px]" : "top-0" // 👈 Push down when top bar is visible
+        atTop ? "top-[40px]" : "top-0"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
