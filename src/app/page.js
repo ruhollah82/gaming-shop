@@ -1,18 +1,17 @@
 import Slider from "../components/Slider";
 import ProductList from "../components/ProductList";
 import GameStoreBanner from "@/components/Banner/Banner";
+import MarqueeSection from "@/components/freeExpress";
+import IconBoxSection from "@/components/iconBoxSection";
 
 export default function HomePage() {
   return (
     <div className="px-4 py-8">
-      <section className="mb-10">
+      <section>
         <GameStoreBanner />
       </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Featured Products</h2>
-        {/* <ProductList /> */}
-      </section>
+      <MarqueeSection />
+      <IconBoxSection />
     </div>
   );
 }

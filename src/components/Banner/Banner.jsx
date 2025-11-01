@@ -1,12 +1,26 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Image from "next/image";
 import BannerItem from "./BannerItem";
 
 const GameStoreBanner = () => {
   return (
-    <div className="flex flex-col md:flex-row gap-5 rounded-2xl px-12 pt-16">
+    <div className="relative flex flex-col md:flex-row justify-center items-center gap-5 px-12 py-24  overflow-hidden">
+      {/* 🖼 Background Image */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: "url('/images/hero/background.webp')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          // filter: "brightness(0.7)", // تاریک‌تر برای خوانایی بهتر
+        }}
+      />
+
+      {/* 🌟 Optional overlay for gradient */}
+      {/* <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent -z-10" /> */}
+
+      {/* 🧱 Banner items */}
       <BannerItem
         image="/images/hero/keyboard.webp"
         title="Best Seller"

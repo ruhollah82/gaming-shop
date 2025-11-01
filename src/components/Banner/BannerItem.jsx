@@ -28,7 +28,7 @@ const BannerItem = ({ image, title, subtitle, description, link }) => {
 
   return (
     <div
-      className="relative w-full h-[660px] overflow-hidden rounded-2xl shadow-lg"
+      className="relative w-[45%] h-[660px] overflow-hidden rounded-2xl shadow-lg"
       onMouseEnter={handleHoverStart}
       onMouseLeave={handleHoverEnd}
     >
