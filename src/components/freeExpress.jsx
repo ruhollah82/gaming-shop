@@ -1,50 +1,264 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Icon } from "@iconify/react";
 
 const ShippingIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="22"
-    viewBox="0 0 20 22"
-    fill="none"
-  >
-    <path
-      d="M19.6528 10.3641C17.4705 10.3569 15.1796 9.91078 13.4555 8.48806C12.0063 7.29202 11.1454 5.59441 10.7282 3.78587C10.4678 2.65734 10.3738 1.50229 10.381 0.347239C10.381 0.106101 10.1881 0 10 0C9.81191 0 9.619 0.106101 9.619 0.347239C9.62865 2.31734 9.35134 4.35496 8.4326 6.12491C7.55727 7.81046 6.11526 9.08609 4.32843 9.73475C3.05281 10.1977 1.69761 10.3617 0.347239 10.3665C0.106101 10.3665 0 10.5619 0 10.7499C0 10.938 0.106101 11.1333 0.347239 11.1333C2.52954 11.1406 4.82035 11.5867 6.54449 13.0094C7.99373 14.2054 8.85459 15.9031 9.27176 17.7116C9.53219 18.8401 9.62382 19.9952 9.619 21.1502C9.619 21.3914 9.81191 21.4975 10 21.4975C10.1881 21.4975 10.381 21.3914 10.381 21.1502C10.3714 19.1801 10.6487 17.1425 11.5674 15.3726C12.4427 13.687 13.8847 12.4114 15.6716 11.7627C16.9472 11.2997 18.3024 11.1358 19.6528 11.1309C19.8939 11.1309 20 10.9356 20 10.7475C20 10.5594 19.8939 10.3641 19.6528 10.3641ZM13.019 12.4331C11.4492 13.6942 10.4919 15.5462 10.0386 17.4825C10.0241 17.5404 10.0145 17.6007 10 17.6585C9.79503 16.7278 9.48637 15.8235 9.04268 14.9771C8.08295 13.1444 6.49144 11.7892 4.5551 11.0779C4.18857 10.9428 3.81239 10.8343 3.4314 10.7451C4.71184 10.4389 5.92718 9.90596 6.97854 9.06197C8.54835 7.80082 9.50567 5.94888 9.95901 4.01254C9.97348 3.95467 9.98312 3.89438 9.99759 3.83651C10.2026 4.7673 10.5112 5.67157 10.9549 6.51796C11.9146 8.35061 13.5061 9.70581 15.4425 10.4172C15.809 10.5522 16.1852 10.6607 16.5662 10.7499C15.2857 11.0586 14.0704 11.5891 13.019 12.4331Z"
-      fill="white"
-    />
-  </svg>
+  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-400 to-cyan-400 flex items-center justify-center shadow-lg">
+    <Icon icon="mdi:rocket-launch" className="w-4 h-4 text-white" />
+  </div>
 );
 
-const items = ["Free express shipping worldwide"];
+const SecurityIcon = () => (
+  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-indigo-400 flex items-center justify-center shadow-lg">
+    <Icon icon="mdi:shield-check" className="w-4 h-4 text-white" />
+  </div>
+);
+
+const SupportIcon = () => (
+  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 flex items-center justify-center shadow-lg">
+    <Icon icon="mdi:headset" className="w-4 h-4 text-white" />
+  </div>
+);
+
+const ReturnIcon = () => (
+  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-400 to-red-400 flex items-center justify-center shadow-lg">
+    <Icon icon="mdi:refresh" className="w-4 h-4 text-white" />
+  </div>
+);
+
+const items = [
+  {
+    text: "Free express shipping worldwide",
+    icon: <ShippingIcon />,
+    color: "from-green-500 to-cyan-500",
+  },
+  {
+    text: "30-day money back guarantee",
+    icon: <ReturnIcon />,
+    color: "from-orange-500 to-red-500",
+  },
+  {
+    text: "Secure payment & data protection",
+    icon: <SecurityIcon />,
+    color: "from-blue-500 to-indigo-500",
+  },
+  {
+    text: "24/7 customer support",
+    icon: <SupportIcon />,
+    color: "from-purple-500 to-pink-500",
+  },
+  {
+    text: "2-year warranty on all products",
+    icon: <SecurityIcon />,
+    color: "from-green-500 to-emerald-500",
+  },
+  {
+    text: "Free returns & exchanges",
+    icon: <ReturnIcon />,
+    color: "from-cyan-500 to-blue-500",
+  },
+];
 
 const MarqueeSection = () => {
-  const repeatedItems = Array(10).fill(items).flat();
+  const repeatedItems = Array(6).fill(items).flat();
 
   return (
-    <div
-      className="relative overflow-hidden p-[30px]"
-      style={{ backgroundColor: "rgb(153,20,242)" }}
-    >
-      <motion.div
-        className="flex whitespace-nowrap justify-between"
-        animate={{ x: ["0%", "-100%"] }}
-        transition={{
-          repeat: Infinity,
-          ease: "linear",
-          duration: 10,
-        }}
-      >
-        {repeatedItems.map((text, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-between gap-5 mx-8 text-white text-lg font-medium py-4"
-          >
-            <ShippingIcon />
-            <p>{text}</p>
-          </div>
+    <div className="relative overflow-hidden bg-gradient-to-r from-gray-900 to-gray-800 py-6">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full -translate-x-32 -translate-y-32"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-white rounded-full translate-x-32 translate-y-32"></div>
+      </div>
+
+      {/* Animated Border */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent">
+        <motion.div
+          className="h-full bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400"
+          animate={{
+            background: [
+              "linear-gradient(90deg, #22d3ee, #a855f7, #ec4899)",
+              "linear-gradient(90deg, #ec4899, #22d3ee, #a855f7)",
+              "linear-gradient(90deg, #a855f7, #ec4899, #22d3ee)",
+            ],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        />
+      </div>
+
+      <div className="relative">
+        {/* First Marquee - Left to Right */}
+        <motion.div
+          className="flex whitespace-nowrap py-3"
+          animate={{ x: ["0%", "-100%"] }}
+          transition={{
+            repeat: Infinity,
+            ease: "linear",
+            duration: 40,
+          }}
+        >
+          {repeatedItems.map((item, index) => (
+            <div
+              key={`first-${index}`}
+              className="flex items-center gap-4 mx-6 px-4 py-2 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+            >
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {item.icon}
+              </motion.div>
+              <p className="text-white text-base font-semibold whitespace-nowrap group-hover:text-cyan-200 transition-colors">
+                {item.text}
+              </p>
+
+              {/* Animated Dot */}
+              <motion.div
+                className={`w-2 h-2 rounded-full bg-gradient-to-r ${item.color}`}
+                animate={{
+                  scale: [1, 1.5, 1],
+                  opacity: [0.7, 1, 0.7],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: index * 0.2,
+                }}
+              />
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Second Marquee - Right to Left (Delayed) */}
+        <motion.div
+          className="flex whitespace-nowrap py-3"
+          animate={{ x: ["-100%", "0%"] }}
+          transition={{
+            repeat: Infinity,
+            ease: "linear",
+            duration: 35,
+          }}
+        >
+          {repeatedItems.map((item, index) => (
+            <div
+              key={`second-${index}`}
+              className="flex items-center gap-4 mx-6 px-4 py-2 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+            >
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {item.icon}
+              </motion.div>
+              <p className="text-white text-base font-semibold whitespace-nowrap group-hover:text-purple-200 transition-colors">
+                {item.text}
+              </p>
+
+              {/* Pulsing Ring */}
+              <motion.div
+                className="relative"
+                animate={{
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  delay: index * 0.3,
+                }}
+              >
+                <div
+                  className={`w-2 h-2 rounded-full bg-gradient-to-r ${item.color}`}
+                />
+                <motion.div
+                  className={`absolute inset-0 rounded-full bg-gradient-to-r ${item.color} opacity-0`}
+                  animate={{
+                    opacity: [0, 0.5, 0],
+                    scale: [1, 2, 3],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: index * 0.3,
+                  }}
+                />
+              </motion.div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Bottom Animated Border */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent">
+        <motion.div
+          className="h-full bg-gradient-to-r from-pink-400 via-cyan-400 to-purple-400"
+          animate={{
+            background: [
+              "linear-gradient(90deg, #ec4899, #22d3ee, #a855f7)",
+              "linear-gradient(90deg, #a855f7, #ec4899, #22d3ee)",
+              "linear-gradient(90deg, #22d3ee, #a855f7, #ec4899)",
+            ],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        />
+      </div>
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
         ))}
+      </div>
+
+      {/* CTA Badge */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+        initial={{ scale: 0, rotate: -180 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ type: "spring", stiffness: 200, delay: 0.5 }}
+      >
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl px-6 py-3 shadow-2xl border border-white/20 backdrop-blur-sm">
+          <div className="flex items-center gap-2">
+            <motion.div
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <Icon icon="mdi:star" className="w-5 h-5 text-white" />
+            </motion.div>
+            <span className="text-white font-bold text-sm uppercase tracking-wider">
+              Premium Features
+            </span>
+            <motion.div
+              animate={{ rotate: [0, -10, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+            >
+              <Icon icon="mdi:star" className="w-5 h-5 text-white" />
+            </motion.div>
+          </div>
+        </div>
       </motion.div>
     </div>
   );
