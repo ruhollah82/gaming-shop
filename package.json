@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@iconify/react": "^6.0.2",
+    "antd": "^5.28.0",
     "clsx": "^2.1.1",
     "faker": "^6.6.6",
     "framer-motion": "^12.23.24",

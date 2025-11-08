@@ -6,10 +6,12 @@ import CategorySlider from "@/components/CategorySlider";
 import DiscountCollection from "@/components/DiscountCollection";
 import ProductCard from "@/components/ProductCard";
 import TestimonialSlider from "@/components/TestimonialSlider";
+import BrandsGrid from "@/components/BrandsGrid";
+import MapSection from "@/components/MapSection";
 
 export default function HomePage() {
   return (
-    <div className=" py-8">
+    <div>
       <section>
         <GameStoreBanner />
       </section>
@@ -18,7 +20,11 @@ export default function HomePage() {
       <CategorySlider />
       <DiscountCollection />
       <ProductCard />
-      <TestimonialSlider />
+      <div className="px-36 py-24 bg-white">
+        <TestimonialSlider />
+      </div>
+      <BrandsGrid />
+      <MapSection />
     </div>
   );
 }
