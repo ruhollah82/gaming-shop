@@ -88,7 +88,7 @@ export default function CollectionSection() {
         <div className="mb-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <button
-              className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors  text-black"
               onClick={() => setIsFilterOpen(true)}
             >
               <Icon icon="mi:filter" className="w-5 h-5" />
