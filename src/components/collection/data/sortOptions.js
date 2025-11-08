@@ -1,4 +1,4 @@
-const sortOptions = [
+export const sortOptions = [
   { value: "manual", label: "Featured" },
   { value: "best-selling", label: "Best selling" },
   { value: "title-ascending", label: "Alphabetically, A-Z" },
