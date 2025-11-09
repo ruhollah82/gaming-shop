@@ -2,9 +2,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { Icon } from "@iconify/react";
 
 export default function Footer() {
   const [openSections, setOpenSections] = useState({});
+  const [email, setEmail] = useState("");
 
   const toggleSection = (section) => {
     setOpenSections((prev) => ({
@@ -13,380 +16,525 @@ export default function Footer() {
     }));
   };
 
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    // Handle newsletter subscription
+    console.log("Subscribed with email:", email);
+    setEmail("");
+  };
+
+  // Animation variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
   const socialLinks = [
     {
       name: "Facebook",
       href: "https://facebook.com/shopify",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 320 512"
-          className="w-4 h-4"
-        >
-          <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
-        </svg>
-      ),
+      icon: "mdi:facebook",
+      color: "hover:bg-blue-600",
     },
     {
       name: "Twitter",
       href: "https://x.com/shopify",
-      icon: (
-        <svg viewBox="0 0 512 512" className="w-4 h-4">
-          <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
-        </svg>
-      ),
+      icon: "mdi:twitter",
+      color: "hover:bg-sky-500",
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512"
-          className="w-4 h-4"
-        >
-          <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
-        </svg>
-      ),
+      icon: "mdi:instagram",
+      color: "hover:bg-gradient-to-r from-purple-600 to-pink-600",
     },
     {
       name: "TikTok",
       href: "https://tiktok.com/@shopify",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512"
-          className="w-4 h-4"
-        >
-          <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z" />
-        </svg>
-      ),
+      icon: "mdi:tiktok",
+      color: "hover:bg-black",
     },
     {
       name: "Pinterest",
       href: "https://pinterest.com/shopify",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 496 512"
-          className="w-4 h-4"
-        >
-          <path d="M496 256c0 137-111 248-248 248-25.6 0-50.2-3.9-73.4-11.1 10.1-16.5 25.2-43.5 30.8-65 3-11.6 15.4-59 15.4-59 8.1 15.4 31.7 28.5 56.8 28.5 74.8 0 128.7-68.8 128.7-154.3 0-81.9-66.9-143.2-152.9-143.2-107 0-163.9 71.8-163.9 150.1 0 36.4 19.4 81.7 50.3 96.1 4.7 2.2 7.2 1.2 8.3-3.3.8-3.4 5-20.3 6.9-28.1.6-2.5.3-4.7-1.7-7.1-10.1-12.5-18.3-35.3-18.3-56.6 0-54.7 41.4-107.6 112-107.6 60.9 0 103.6 41.5 103.6 100.9 0 67.1-33.9 113.6-78 113.6-24.3 0-42.6-20.1-36.7-44.8 7-29.5 20.5-61.3 20.5-82.6 0-19-10.2-34.9-31.4-34.9-24.9 0-44.9 25.7-44.9 60.2 0 22 7.4 36.8 7.4 36.8s-24.5 103.8-29 123.2c-5 21.4-3 51.6-.9 71.2C65.4 450.9 0 361.1 0 256 0 119 111 8 248 8s248 111 248 248z" />
-        </svg>
-      ),
+      icon: "mdi:pinterest",
+      color: "hover:bg-red-600",
     },
   ];
 
   const helpLinks = [
-    { name: "Privacy Policy", href: "/privacy-policy" },
-    { name: "Returns + Exchanges", href: "/delivery-return" },
-    { name: "Shipping", href: "/shipping-delivery" },
-    { name: "Terms & Conditions", href: "/terms-conditions" },
-    { name: "FAQ's", href: "/faq01" },
-    { name: "Compare", href: "/search?view=compare" },
-    { name: "My Wishlist", href: "/search?view=wishlist" },
+    {
+      name: "Privacy Policy",
+      href: "/privacy-policy",
+      icon: "mdi:shield-account",
+    },
+    {
+      name: "Returns + Exchanges",
+      href: "/delivery-return",
+      icon: "mdi:refresh",
+    },
+    { name: "Shipping", href: "/shipping-delivery", icon: "mdi:truck-fast" },
+    {
+      name: "Terms & Conditions",
+      href: "/terms-conditions",
+      icon: "mdi:file-document",
+    },
+    { name: "FAQ's", href: "/faq01", icon: "mdi:help-circle" },
+    {
+      name: "Compare",
+      href: "/search?view=compare",
+      icon: "mdi:scale-balance",
+    },
+    { name: "My Wishlist", href: "/search?view=wishlist", icon: "mdi:heart" },
   ];
 
   const aboutLinks = [
-    { name: "Our Story", href: "/about-us" },
-    { name: "Visit Our Store", href: "/our-store" },
-    { name: "Contact Us", href: "/contact" },
-    { name: "About Us", href: "/about-us" },
-    { name: "Account", href: "/account/login" },
+    { name: "Our Story", href: "/about-us", icon: "mdi:book-open" },
+    { name: "Visit Our Store", href: "/our-store", icon: "mdi:store" },
+    { name: "Contact Us", href: "/contact", icon: "mdi:email" },
+    { name: "About Us", href: "/about-us", icon: "mdi:information" },
+    { name: "Account", href: "/account/login", icon: "mdi:account" },
   ];
 
   const paymentMethods = [
-    { name: "Visa", icon: "visa" },
-    { name: "PayPal", icon: "paypal" },
-    { name: "Mastercard", icon: "mastercard" },
-    { name: "American Express", icon: "american_express" },
-    { name: "Diners Club", icon: "diners_club" },
+    { name: "Visa", icon: "simple-icons:visa" },
+    { name: "PayPal", icon: "simple-icons:paypal" },
+    { name: "Mastercard", icon: "simple-icons:mastercard" },
+    { name: "American Express", icon: "simple-icons:americanexpress" },
+    { name: "Diners Club", icon: "simple-icons:dinersclub" },
+    { name: "Apple Pay", icon: "simple-icons:applepay" },
+    { name: "Google Pay", icon: "simple-icons:googlepay" },
+  ];
+
+  const features = [
+    { icon: "mdi:truck-fast", text: "Free Shipping Worldwide" },
+    { icon: "mdi:shield-check", text: "Secure Payment" },
+    { icon: "mdi:refresh", text: "30-Day Returns" },
+    { icon: "mdi:headset", text: "24/7 Support" },
   ];
 
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full -translate-x-32 -translate-y-32"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-white rounded-full translate-x-32 translate-y-32"></div>
+      </div>
+
+      {/* Features Bar */}
+      <motion.div
+        className="border-b border-gray-700"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.text}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+                className="flex items-center justify-center gap-3 text-sm"
+              >
+                <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                  <Icon icon={feature.icon} className="w-5 h-5 text-white" />
+                </div>
+                <span className="font-medium">{feature.text}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
       {/* Main Footer */}
-      <div className="border-b border-gray-700 py-10">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-8 lg:gap-12">
             {/* Brand & Contact Section */}
-            <div className="space-y-6">
+            <motion.div variants={fadeInUp} className="xl:col-span-2 space-y-6">
               {/* Logo */}
               <Link href="/" className="block">
-                <Image
-                  src="//ecomus-2-2.myshopify.com/cdn/shop/files/logo_white.svg?v=1744703286"
-                  alt="Ecomus"
-                  width={136}
-                  height={21}
-                  className="h-6 w-auto"
-                />
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                    <Icon icon="mdi:gamepad" className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <Image
+                      src="//ecomus-2-2.myshopify.com/cdn/shop/files/logo_white.svg?v=1744703286"
+                      alt="Ecomus"
+                      width={136}
+                      height={21}
+                      className="h-6 w-auto"
+                    />
+                    <p className="text-gray-300 text-sm mt-1">
+                      Premium Gaming Gear
+                    </p>
+                  </div>
+                </div>
               </Link>
 
+              {/* Description */}
+              <p className="text-gray-300 leading-relaxed max-w-md">
+                Your ultimate destination for premium gaming equipment.
+                Experience unparalleled performance with our carefully curated
+                collection of gaming gear.
+              </p>
+
               {/* Address & Contact */}
-              <div className="text-gray-300 text-sm space-y-2">
-                <p>Address: 1234 Fashion Street, Suite 567,</p>
-                <p>New York, NY</p>
-                <p>
-                  Email: <strong>info@fashionshop.com</strong>
-                </p>
-                <p>
-                  Phone: <strong>(212)555-1234</strong>
-                </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-gray-300">
+                  <Icon
+                    icon="mdi:map-marker"
+                    className="w-5 h-5 text-blue-400"
+                  />
+                  <div>
+                    <p className="font-medium">1234 Gaming Street, Suite 567</p>
+                    <p className="text-sm">New York, NY 10001</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 text-gray-300">
+                  <Icon icon="mdi:email" className="w-5 h-5 text-green-400" />
+                  <div>
+                    <p className="font-medium">support@ecomus.com</p>
+                    <p className="text-sm">We reply within 24 hours</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 text-gray-300">
+                  <Icon icon="mdi:phone" className="w-5 h-5 text-purple-400" />
+                  <div>
+                    <p className="font-medium">(212) 555-1234</p>
+                    <p className="text-sm">Mon-Fri 9AM-6PM EST</p>
+                  </div>
+                </div>
               </div>
 
               {/* Get Directions Button */}
-              <Link
-                href="/store-locations"
-                className="inline-flex items-center gap-2 bg-transparent border border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition-all duration-300 font-semibold"
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Get direction
-                <svg
-                  className="w-3 h-3"
-                  viewBox="0 0 64 64"
-                  fill="currentColor"
+                <Link
+                  href="/store-locations"
+                  className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-2xl hover:bg-white/20 transition-all duration-300 font-semibold"
                 >
-                  <path d="M6.89,64,0,57.11,47.26,9.85H4.92V0H64V59.08H54.15V16.74Z" />
-                </svg>
-              </Link>
+                  <Icon icon="mdi:map" className="w-5 h-5" />
+                  Get Directions
+                </Link>
+              </motion.div>
 
               {/* Social Media */}
               <div className="pt-4">
-                <ul className="flex space-x-4">
+                <p className="text-gray-300 font-medium mb-4">Follow Us</p>
+                <div className="flex gap-3">
                   {socialLinks.map((social) => (
-                    <li key={social.name}>
-                      <a
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center w-10 h-10 border border-gray-600 rounded-full hover:border-white hover:text-white transition-all duration-300"
-                        aria-label={social.name}
+                    <motion.a
+                      key={social.name}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center justify-center w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white transition-all duration-300 ${social.color} hover:scale-110 hover:shadow-lg`}
+                      aria-label={social.name}
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <Icon icon={social.icon} className="w-5 h-5" />
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Help Links */}
+            <motion.div variants={fadeInUp} className="space-y-6">
+              <div className="lg:hidden">
+                <button
+                  onClick={() => toggleSection("help")}
+                  className="flex items-center justify-between w-full text-lg font-semibold mb-4"
+                >
+                  <span>Customer Support</span>
+                  <Icon
+                    icon="mdi:chevron-down"
+                    className={`w-5 h-5 transform transition-transform ${
+                      openSections.help ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              </div>
+              <h6 className="text-lg font-semibold mb-6 hidden lg:block flex items-center gap-2">
+                <Icon icon="mdi:headset" className="w-5 h-5 text-blue-400" />
+                Customer Support
+              </h6>
+
+              <AnimatePresence>
+                <ul
+                  className={`space-y-3 ${
+                    openSections.help ? "block" : "hidden lg:block"
+                  }`}
+                >
+                  {helpLinks.map((link, index) => (
+                    <motion.li
+                      key={link.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Link
+                        href={link.href}
+                        className="flex items-center gap-3 text-gray-300 hover:text-white transition-all duration-300 group py-2"
                       >
-                        {social.icon}
-                      </a>
-                    </li>
+                        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-blue-500/20 transition-all">
+                          <Icon icon={link.icon} className="w-4 h-4" />
+                        </div>
+                        <span>{link.name}</span>
+                      </Link>
+                    </motion.li>
                   ))}
                 </ul>
+              </AnimatePresence>
+            </motion.div>
+
+            {/* About Us Links */}
+            <motion.div variants={fadeInUp} className="space-y-6">
+              <div className="lg:hidden">
+                <button
+                  onClick={() => toggleSection("about")}
+                  className="flex items-center justify-between w-full text-lg font-semibold mb-4"
+                >
+                  <span>About Ecomus</span>
+                  <Icon
+                    icon="mdi:chevron-down"
+                    className={`w-5 h-5 transform transition-transform ${
+                      openSections.about ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
               </div>
-            </div>
-
-            {/* Help Links - Mobile Collapsible */}
-            <div className="lg:block">
-              <button
-                onClick={() => toggleSection("help")}
-                className="flex items-center justify-between w-full lg:hidden text-lg font-medium mb-4"
-              >
-                Help
-                <svg
-                  className={`w-4 h-4 transform transition-transform ${
-                    openSections.help ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <h6 className="text-lg font-medium mb-4 hidden lg:block">Help</h6>
-              <ul
-                className={`space-y-3 ${
-                  openSections.help ? "block" : "hidden lg:block"
-                }`}
-              >
-                {helpLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-300 hover:text-white transition-colors text-sm"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* About Us Links - Mobile Collapsible */}
-            <div className="lg:block">
-              <button
-                onClick={() => toggleSection("about")}
-                className="flex items-center justify-between w-full lg:hidden text-lg font-medium mb-4"
-              >
-                About us
-                <svg
-                  className={`w-4 h-4 transform transition-transform ${
-                    openSections.about ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <h6 className="text-lg font-medium mb-4 hidden lg:block">
-                About us
+              <h6 className="text-lg font-semibold mb-6 hidden lg:block flex items-center gap-2">
+                <Icon
+                  icon="mdi:information"
+                  className="w-5 h-5 text-green-400"
+                />
+                About Ecomus
               </h6>
-              <ul
-                className={`space-y-3 ${
-                  openSections.about ? "block" : "hidden lg:block"
-                }`}
-              >
-                {aboutLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-300 hover:text-white transition-colors text-sm"
+
+              <AnimatePresence>
+                <ul
+                  className={`space-y-3 ${
+                    openSections.about ? "block" : "hidden lg:block"
+                  }`}
+                >
+                  {aboutLinks.map((link, index) => (
+                    <motion.li
+                      key={link.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
                     >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                      <Link
+                        href={link.href}
+                        className="flex items-center gap-3 text-gray-300 hover:text-white transition-all duration-300 group py-2"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-green-500/20 transition-all">
+                          <Icon icon={link.icon} className="w-4 h-4" />
+                        </div>
+                        <span>{link.name}</span>
+                      </Link>
+                    </motion.li>
+                  ))}
+                </ul>
+              </AnimatePresence>
+            </motion.div>
 
             {/* Newsletter Section */}
-            <div className="space-y-6">
+            <motion.div variants={fadeInUp} className="space-y-6">
               <div className="lg:hidden">
                 <button
                   onClick={() => toggleSection("newsletter")}
-                  className="flex items-center justify-between w-full text-lg font-medium mb-4"
+                  className="flex items-center justify-between w-full text-lg font-semibold mb-4"
                 >
-                  Sign Up for Email
-                  <svg
-                    className={`w-4 h-4 transform transition-transform ${
+                  <span>Stay Updated</span>
+                  <Icon
+                    icon="mdi:chevron-down"
+                    className={`w-5 h-5 transform transition-transform ${
                       openSections.newsletter ? "rotate-180" : ""
                     }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
+                  />
                 </button>
               </div>
-              <h6 className="text-lg font-medium mb-4 hidden lg:block">
-                Sign Up for Email
-              </h6>
 
               <div
-                className={`space-y-4 ${
+                className={`space-y-6 ${
                   openSections.newsletter ? "block" : "hidden lg:block"
                 }`}
               >
-                <p className="text-gray-300 text-sm">
-                  Sign up to get first dibs on new arrivals, sales, exclusive
-                  content, events and more!
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center shadow-lg">
+                    <Icon
+                      icon="mdi:email-newsletter"
+                      className="w-6 h-6 text-white"
+                    />
+                  </div>
+                  <div>
+                    <h6 className="text-lg font-semibold">Stay Updated</h6>
+                    <p className="text-gray-300 text-sm">
+                      Get exclusive deals & updates
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Be the first to know about new arrivals, exclusive sales, and
+                  special promotions. Join our gaming community today!
                 </p>
 
                 {/* Newsletter Form */}
-                <form className="space-y-3">
-                  <div className="flex space-x-2">
+                <form onSubmit={handleSubscribe} className="space-y-4">
+                  <motion.div whileHover={{ scale: 1.02 }} className="relative">
                     <input
                       type="email"
-                      placeholder="Enter email address"
-                      className="flex-1 px-4 py-3 bg-white text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email address"
+                      className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-2xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       required
                     />
-                    <button
-                      type="submit"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors text-sm"
-                    >
-                      Subscribe
-                    </button>
-                  </div>
+                    <Icon
+                      icon="mdi:email"
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"
+                    />
+                  </motion.div>
+
+                  <motion.button
+                    type="submit"
+                    className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Icon icon="mdi:send" className="w-5 h-5" />
+                    Subscribe Now
+                  </motion.button>
                 </form>
 
-                {/* Currency & Language Selector */}
-                <div className="flex space-x-4 pt-4">
-                  <div className="flex items-center space-x-2">
-                    <Image
-                      src="//cdn.shopify.com/static/images/flags/il.svg?width=16"
-                      alt="Israel"
-                      width={16}
-                      height={12}
-                      className="w-4 h-3"
-                    />
-                    <span className="text-sm">ILS</span>
-                    <svg
-                      className="w-3 h-3"
-                      fill="currentColor"
-                      viewBox="0 0 19 12"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="17 2 9.5 10 2 2"
-                        strokeWidth="2"
-                        strokeLinecap="square"
-                      />
-                    </svg>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm">English</span>
-                    <svg
-                      className="w-3 h-3"
-                      fill="currentColor"
-                      viewBox="0 0 19 12"
-                    >
-                      <polyline
-                        fill="none"
-                        stroke="currentColor"
-                        points="17 2 9.5 10 2 2"
-                        strokeWidth="2"
-                        strokeLinecap="square"
-                      />
-                    </svg>
+                {/* Trust Badges */}
+                <div className="pt-4 border-t border-gray-700">
+                  <div className="flex items-center justify-between">
+                    <div className="text-center">
+                      <div className="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center mx-auto mb-2">
+                        <Icon
+                          icon="mdi:shield-check"
+                          className="w-5 h-5 text-green-400"
+                        />
+                      </div>
+                      <span className="text-xs text-gray-300">Secure</span>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center mx-auto mb-2">
+                        <Icon
+                          icon="mdi:lock"
+                          className="w-5 h-5 text-blue-400"
+                        />
+                      </div>
+                      <span className="text-xs text-gray-300">Private</span>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center mx-auto mb-2">
+                        <Icon
+                          icon="mdi:email-check"
+                          className="w-5 h-5 text-purple-400"
+                        />
+                      </div>
+                      <span className="text-xs text-gray-300">Verified</span>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Footer Bottom */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="border-t border-gray-700 py-8 relative z-10"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
+            {/* Copyright */}
+            <div className="text-gray-400 text-sm text-center lg:text-left">
+              <p>
+                © 2025{" "}
+                <span className="font-semibold text-white">Ecomus Gaming</span>.
+                All rights reserved.
+              </p>
+              <p className="mt-1 text-xs">
+                Designed for the ultimate gaming experience
+              </p>
+            </div>
+
+            {/* Payment Methods */}
+            <div className="flex items-center gap-4">
+              <span className="text-gray-400 text-sm font-medium hidden sm:block">
+                We Accept:
+              </span>
+              <div className="flex gap-2">
+                {paymentMethods.map((payment, index) => (
+                  <motion.div
+                    key={payment.name}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.6 + index * 0.1 }}
+                    className="w-10 h-8 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-all"
+                    title={payment.name}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                  >
+                    <Icon
+                      icon={payment.icon}
+                      className="w-6 h-6 text-gray-700"
+                    />
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Footer Bottom */}
-      <div className="py-6">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            {/* Copyright */}
-            <div className="text-gray-400 text-sm text-center md:text-left">
-              © 2025 <span className="font-semibold">Ecomus</span>. All rights
-              reserved.
-            </div>
-
-            {/* Payment Methods */}
-            <div className="flex space-x-3">
-              {paymentMethods.map((payment) => (
-                <div
-                  key={payment.name}
-                  className="w-9 h-6 bg-white rounded flex items-center justify-center"
-                  title={payment.name}
-                >
-                  <span className="text-xs font-semibold text-gray-600">
-                    {payment.icon}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Back to Top Button */}
+      <motion.button
+        className="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-lg hover:shadow-xl flex items-center justify-center text-white z-50"
+        whileHover={{ scale: 1.1, y: -2 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
+      >
+        <Icon icon="mdi:chevron-up" className="w-6 h-6" />
+      </motion.button>
     </footer>
   );
 }

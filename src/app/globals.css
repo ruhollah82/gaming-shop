@@ -4,6 +4,6 @@
 @tailwind utilities;
 
 body {
-  background-color: blue;
+  background-color: black;
   font-family: system-ui, sans-serif;
 }
