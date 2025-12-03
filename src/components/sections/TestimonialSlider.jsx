@@ -65,6 +65,14 @@ export default function TestimonialSlider() {
     },
   };
 
+  // 🔁 Safely sync both Swipers after they're initialized
+  useEffect(() => {
+    if (contentSwiperRef.current && controlledSwiper) {
+      contentSwiperRef.current.controller.control = controlledSwiper;
+      controlledSwiper.controller.control = contentSwiperRef.current;
+    }
+  }, [controlledSwiper]);
+
   return (
     <motion.section
       className="relative py-16 bg-gray-50 overflow-hidden rounded-2xl"
@@ -96,7 +104,7 @@ export default function TestimonialSlider() {
           {/* Testimonial Content */}
           <div className="w-full lg:w-1/2">
             <motion.div
-              className="relative overflow-hidden rounded-2xl p-8 lg:p-12"
+              className="relative overflow-hidden rounded-2xl p-6 sm:p-8 lg:p-12"
               variants={itemVariants}
             >
               <Swiper
@@ -114,12 +122,12 @@ export default function TestimonialSlider() {
                 onSwiper={(swiper) => {
                   contentSwiperRef.current = swiper;
                 }}
-                controller={{ control: controlledSwiper }}
+                // Controller is handled in useEffect — do not set here
                 speed={600}
                 loop={true}
-                className="h-80"
+                className="h-[400px] sm:h-[440px] lg:h-80"
               >
-                {testimonials.map((testimonial, index) => (
+                {testimonials.map((testimonial) => (
                   <SwiperSlide key={testimonial.id}>
                     <motion.div
                       className="w-full h-full flex flex-col justify-center"
@@ -179,7 +187,7 @@ export default function TestimonialSlider() {
 
                       {/* Testimonial Text */}
                       <motion.blockquote
-                        className="text-lg lg:text-xl text-white mb-8 leading-relaxed"
+                        className="text-lg sm:text-xl text-white mb-8 leading-relaxed"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
@@ -217,12 +225,10 @@ export default function TestimonialSlider() {
               </Swiper>
 
               {/* Navigation Buttons */}
-              <div className="flex items-center justify-between mt-8">
-                <div className="testimonial-pagination flex gap-2">
-                  {/* Pagination bullets will be inserted here by Swiper */}
-                </div>
+              <div className="flex items-center justify-between mt-6 sm:mt-8">
+                <div className="testimonial-pagination flex gap-2"></div>
 
-                <div className="flex gap-3">
+                <div className="flex gap-2 sm:gap-3">
                   <button
                     className="testimonial-prev p-2 rounded-full border border-white/50 hover:border-white transition-all hover:bg-white/10"
                     aria-label="Previous testimonial"
@@ -260,41 +266,42 @@ export default function TestimonialSlider() {
           </div>
 
           {/* Testimonial Images */}
-          <div className="lg:w-1/2 flex justify-center items-center">
+          <div className="w-full lg:w-1/2 flex justify-center">
             <motion.div
-              className="relative overflow-hidden w-full flex justify-center items-center"
+              className="relative w-full max-w-md"
               variants={itemVariants}
             >
               <Swiper
                 modules={[Controller]}
                 onSwiper={setControlledSwiper}
-                controller={{ control: contentSwiperRef.current }}
-                speed={1000} // slower = smoother
+                // Controller synced via useEffect
+                speed={1000}
                 loop={true}
                 allowTouchMove={false}
-                centeredSlides={true} // ✅ centers the active slide
+                centeredSlides={true}
                 slidesPerView={1}
                 spaceBetween={0}
-                className="flex justify-center items-center"
+                className="w-full flex justify-center"
               >
                 {testimonials.map((testimonial) => (
                   <SwiperSlide
                     key={testimonial.id}
-                    className="flex justify-center items-center"
+                    className="flex justify-center"
                   >
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.6, ease: "easeInOut" }}
-                      className="flex justify-center items-center"
+                      className="flex justify-center"
                     >
                       <Image
                         src={testimonial.image.src}
                         alt={testimonial.author}
                         width={600}
                         height={600}
-                        className="w-[60%] object-cover rounded-xl shadow-lg"
+                        className="w-full max-w-[300px] sm:max-w-[400px] h-auto object-cover rounded-xl shadow-lg"
+                        priority={false}
                       />
                     </motion.div>
                   </SwiperSlide>
