@@ -1,7 +1,7 @@
 import "./globals.css";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import TopBar from "@/components/TopBar";
+import Navbar from "@/features/navbar/Navbar";
+import Footer from "@/features/footer/Footer";
+import { Header } from "@/components/layout";
 
 export const metadata = {
   title: "Gaming Shop Demo",
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-gray-500 text-gray-100">
         <>
-          <TopBar />
+          <Header />
           <Navbar />
         </>
         <main className="min-h-screen">{children}</main>

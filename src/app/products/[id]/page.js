@@ -1,11 +1,12 @@
 // app/products/[id]/page.jsx
-import CompareSection from "@/components/product-detail/CompareSection";
-import ProductDetailPage from "@/components/product-detail/ProductDetailPage";
+import ProductDetail from "./ProductDetail";
+import { CompareSection } from "@/components/features/product";
 
-export default function ProductDetail() {
+export default function ProductDetailPage() {
   return (
     <>
-      <ProductDetailPage />
+      <ProductDetail />
+      <CompareSection />
     </>
   );
 }
