@@ -1,4 +1,3 @@
-"use client";
 import { Banner, FreeExpressMarquee, IconBoxSection, CategorySlider, TestimonialSlider, BrandsGrid, StoreLocationSection } from "@/components/sections";
 import DiscountCollection from "@/features/home/components/DiscountCollection";
 import ProductCard from "@/features/product/components/ProductCard";
