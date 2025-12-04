@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
-import { staggerContainer, scaleIn } from "./animations";
+import { staggerContainer, scaleIn } from "../shared/animations";
 
 const StatsSection = () => {
   const stats = [

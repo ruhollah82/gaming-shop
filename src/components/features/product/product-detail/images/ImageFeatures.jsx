@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
-import { fadeInUp, scaleIn } from "./animations";
+import { fadeInUp, scaleIn } from "../shared/animations";
 
 // Note: This component uses framer-motion animations but renders static content
 // In Next.js 13+ App Router, this can be a server component since motion handles the client-side animations

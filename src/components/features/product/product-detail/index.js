@@ -1,35 +1,19 @@
-// Product Detail Components
-export { default as ProductImages } from './ProductImages';
-export { default as ProductImageMain } from './ProductImageMain';
-export { default as ProductBadges } from './ProductBadges';
-export { default as ImageActions } from './ImageActions';
-export { default as ThumbnailGallery } from './ThumbnailGallery';
-export { default as ImageFeatures } from './ImageFeatures';
-export { default as LightboxModal } from './LightboxModal';
-export { default as ProductInfo } from './ProductInfo';
-export { default as ProductActions } from './ProductActions';
-export { default as DeliveryInfoCard } from './DeliveryInfoCard';
-export { default as CompareSection } from './CompareSection';
-export { default as FaqSection } from './FaqSection';
-export { default as TestimonialsSection } from './TestimonialsSection';
+// Organized Product Detail Components by functionality
 
 // FAQ Section Components
-export { default as FaqHeader } from './FaqHeader';
-export { default as FaqItem } from './FaqItem';
-export { default as SupportCTA } from './SupportCTA';
-export { default as ContactModal } from './ContactModal';
-export { default as LiveChatModal } from './LiveChatModal';
+export * from './faq';
 
 // Testimonials Section Components
-export { default as TestimonialsHeader } from './TestimonialsHeader';
-export { default as StatsSection } from './StatsSection';
-export { default as TestimonialCard } from './TestimonialCard';
-export { default as TestimonialsSlider } from './TestimonialsSlider';
-export { default as TestimonialsCTA } from './TestimonialsCTA';
+export * from './testimonials';
 
-// Data exports
-export { testimonials } from './testimonialsData';
+// Image/Product Display Components
+export * from './images';
 
-// Shared utilities
-export * from './animations';
+// Product Information Components
+export * from './info';
+
+// Shared utilities and animations
+export * from './shared';
+
+// Hooks
 export { useLightbox } from './hooks/useLightbox';

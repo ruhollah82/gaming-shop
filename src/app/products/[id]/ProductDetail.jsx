@@ -1,9 +1,7 @@
 // app/products/[id]/ProductDetail.jsx
 import { products } from "@/features/collections/data/products";
-import { DeliveryInfoCard, CompareSection } from "@/components/features/product";
+import { DeliveryInfoCard, CompareSection, FaqSection, TestimonialsSection } from "@/components/features/product";
 import InteractiveProductDetail from "./InteractiveProductDetail";
-import FaqSection from "@/components/features/product/product-detail/FaqSection";
-import TestimonialsSection from "@/components/features/product/product-detail/TestimonialsSection";
 
 export default function ProductDetail({ productId }) {
   // Server-side data validation

@@ -6,7 +6,7 @@ import ProductImageMain from "./ProductImageMain";
 import ThumbnailGallery from "./ThumbnailGallery";
 import ImageFeatures from "./ImageFeatures";
 import LightboxModal from "./LightboxModal";
-import { useLightbox } from "./hooks/useLightbox";
+import { useLightbox } from "../hooks/useLightbox";
 
 export default function ProductImages({
   images,

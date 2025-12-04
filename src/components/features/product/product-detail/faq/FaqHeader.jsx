@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
-import { fadeInUp, scaleIn } from "./animations";
+import { fadeInUp, scaleIn } from "../shared/animations";
 
 const FaqHeader = () => {
   return (

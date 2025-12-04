@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
-import { fadeInUp } from "./animations";
+import { fadeInUp } from "../shared/animations";
 import ProductBadges from "./ProductBadges";
 import ImageActions from "./ImageActions";
 

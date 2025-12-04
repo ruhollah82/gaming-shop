@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Form, message } from "antd";
-import { staggerContainer } from "./animations";
+import { staggerContainer } from "../shared/animations";
 import FaqHeader from "./FaqHeader";
 import FaqItem from "./FaqItem";
 import SupportCTA from "./SupportCTA";
