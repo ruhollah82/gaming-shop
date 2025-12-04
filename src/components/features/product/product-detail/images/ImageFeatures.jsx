@@ -1,27 +1,10 @@
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import { fadeInUp, scaleIn } from "../shared/animations";
+import { imageFeatures } from "@/data/ui";
 
 // Note: This component uses framer-motion animations but renders static content
 // In Next.js 13+ App Router, this can be a server component since motion handles the client-side animations
-
-const features = [
-  {
-    icon: "mdi:rotate-360",
-    title: "360° View",
-    description: "Interactive product rotation",
-  },
-  {
-    icon: "mdi:zoom-in",
-    title: "Zoom & Pan",
-    description: "See every detail clearly",
-  },
-  {
-    icon: "mdi:video-outline",
-    title: "Video Tour",
-    description: "Watch product in action",
-  },
-];
 
 export default function ImageFeatures() {
   return (
@@ -32,7 +15,7 @@ export default function ImageFeatures() {
       transition={{ delay: 0.3 }}
       className="grid grid-cols-1 md:grid-cols-3 gap-4"
     >
-      {features.map((feature, index) => (
+      {imageFeatures.map((feature, index) => (
         <motion.div
           key={feature.title}
           variants={scaleIn}

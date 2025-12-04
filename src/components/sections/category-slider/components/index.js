@@ -5,4 +5,4 @@ export { default as CategorySliderNavigation } from './CategorySliderNavigation'
 export { default as CategorySliderCTA } from './CategorySliderCTA';
 
 // Data exports
-export { categories } from '../data/categories';
+export { sliderCategories as categories } from '@/data/categories';

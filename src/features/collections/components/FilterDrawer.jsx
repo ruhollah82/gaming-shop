@@ -2,7 +2,7 @@
 
 import { Drawer, Collapse, Checkbox, Slider, InputNumber } from "antd";
 import { Icon } from "@iconify/react";
-import { categories } from "../data/categories";
+import { collectionCategories as categories } from "@/data/categories";
 
 const { Panel } = Collapse;
 

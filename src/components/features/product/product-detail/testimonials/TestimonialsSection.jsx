@@ -5,7 +5,7 @@ import TestimonialsHeader from "./TestimonialsHeader";
 import StatsSection from "./StatsSection";
 import TestimonialsSlider from "./TestimonialsSlider";
 import TestimonialsCTA from "./TestimonialsCTA";
-import { testimonials } from "./testimonialsData";
+import { testimonials } from "@/data/testimonials";
 
 export default function TestimonialsSection() {
   return (

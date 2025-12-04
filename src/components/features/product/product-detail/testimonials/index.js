@@ -7,4 +7,4 @@ export { default as TestimonialsSlider } from './TestimonialsSlider';
 export { default as TestimonialsCTA } from './TestimonialsCTA';
 
 // Data exports
-export { testimonials } from './testimonialsData';
+export { testimonials } from '@/data/testimonials';

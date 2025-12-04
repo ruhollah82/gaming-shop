@@ -8,34 +8,38 @@ import GridLayout3Icon from "@/features/collections/components/LayoutIcons/GridL
 import GridLayout4Icon from "@/features/collections/components/LayoutIcons/GridLayout4Icon";
 import GridLayout5Icon from "@/features/collections/components/LayoutIcons/GridLayout5Icon";
 import GridLayout6Icon from "@/features/collections/components/LayoutIcons/GridLayout6Icon";
+import { mobileLayouts, tabletLayouts, desktopLayouts } from "@/data/ui";
 
-const mobileLayouts = [
-  { value: 0, label: "List View", icon: <ListLayoutIcon /> },
-  { value: 1, label: "Grid 1", icon: <GridLayout1Icon /> },
-  { value: 2, label: "Grid 2", icon: <GridLayout2Icon /> },
-];
+const mobileLayoutsWithIcons = mobileLayouts.map(layout => ({
+  ...layout,
+  icon: layout.value === 0 ? <ListLayoutIcon /> :
+        layout.value === 1 ? <GridLayout1Icon /> :
+        <GridLayout2Icon />
+}));
 
-const tabletLayouts = [
-  { value: 0, label: "List View", icon: <ListLayoutIcon /> },
-  { value: 2, label: "Grid 2", icon: <GridLayout2Icon /> },
-  { value: 3, label: "Grid 3", icon: <GridLayout3Icon /> },
-  { value: 4, label: "Grid 4", icon: <GridLayout4Icon /> },
-];
+const tabletLayoutsWithIcons = tabletLayouts.map(layout => ({
+  ...layout,
+  icon: layout.value === 0 ? <ListLayoutIcon /> :
+        layout.value === 2 ? <GridLayout2Icon /> :
+        layout.value === 3 ? <GridLayout3Icon /> :
+        <GridLayout4Icon />
+}));
 
-const desktopLayouts = [
-  { value: 0, label: "List View", icon: <ListLayoutIcon /> },
-  { value: 2, label: "Grid 2", icon: <GridLayout2Icon /> },
-  { value: 3, label: "Grid 3", icon: <GridLayout3Icon /> },
-  { value: 4, label: "Grid 4", icon: <GridLayout4Icon /> },
-  { value: 5, label: "Grid 5", icon: <GridLayout5Icon /> },
-  { value: 6, label: "Grid 6", icon: <GridLayout6Icon /> },
-];
+const desktopLayoutsWithIcons = desktopLayouts.map(layout => ({
+  ...layout,
+  icon: layout.value === 0 ? <ListLayoutIcon /> :
+        layout.value === 2 ? <GridLayout2Icon /> :
+        layout.value === 3 ? <GridLayout3Icon /> :
+        layout.value === 4 ? <GridLayout4Icon /> :
+        layout.value === 5 ? <GridLayout5Icon /> :
+        <GridLayout6Icon />
+}));
 
 export default function LayoutSwitcher({ selectedLayout, onLayoutChange }) {
   return (
     <div className="flex items-center gap-2">
       <div className="flex md:hidden gap-1">
-        {mobileLayouts.map((layout) => (
+        {mobileLayoutsWithIcons.map((layout) => (
           <button
             key={layout.value}
             onClick={() => onLayoutChange(layout.value)}
@@ -51,7 +55,7 @@ export default function LayoutSwitcher({ selectedLayout, onLayoutChange }) {
       </div>
 
       <div className="hidden md:flex lg:hidden gap-1">
-        {tabletLayouts.map((layout) => (
+        {tabletLayoutsWithIcons.map((layout) => (
           <button
             key={layout.value}
             onClick={() => onLayoutChange(layout.value)}
@@ -67,7 +71,7 @@ export default function LayoutSwitcher({ selectedLayout, onLayoutChange }) {
       </div>
 
       <div className="hidden lg:flex gap-1">
-        {desktopLayouts.map((layout) => (
+        {desktopLayoutsWithIcons.map((layout) => (
           <button
             key={layout.value}
             onClick={() => onLayoutChange(layout.value)}

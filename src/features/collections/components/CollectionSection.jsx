@@ -6,8 +6,8 @@ import { Icon } from "@iconify/react";
 import ProductCard from "./ProductCard";
 import FilterDrawer from "./FilterDrawer";
 import { LayoutSwitcher } from "@/components/ui";
-import { products } from "../data/products";
-import { sortOptions } from "../data/sortOptions";
+import { products } from "@/data/products";
+import { sortOptions } from "@/data/config";
 
 const { Meta } = Card;
 

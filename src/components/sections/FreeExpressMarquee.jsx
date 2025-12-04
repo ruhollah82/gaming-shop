@@ -2,11 +2,10 @@
 
 import { motion } from "framer-motion";
 import { ShippingIcon } from "@/components/ui";
-
-const items = ["Free express shipping worldwide"];
+import { marqueeItems, marqueeConfig } from "@/data/ui";
 
 const FreeExpressMarquee = () => {
-  const repeatedItems = Array(10).fill(items).flat();
+  const repeatedItems = Array(marqueeConfig.repeat).fill(marqueeItems).flat();
 
   return (
     <div

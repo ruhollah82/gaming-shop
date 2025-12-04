@@ -5,6 +5,9 @@ import useEmblaCarousel from "embla-carousel-react";
 import AutoHeight from "embla-carousel-auto-height";
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/components/features/product/product-detail/shared/animations";
+import CarouselNavigation from "./CarouselNavigation";
+import CarouselCounter from "./CarouselCounter";
+import CarouselDots from "./CarouselDots";
 
 const Carousel = ({
   children,

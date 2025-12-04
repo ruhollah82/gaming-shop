@@ -1,5 +1,5 @@
 // app/products/[id]/ProductDetail.jsx
-import { products } from "@/features/collections/data/products";
+import { products } from "@/data/products";
 import { DeliveryInfoCard, CompareSection, FaqSection, TestimonialsSection } from "@/components/features/product";
 import InteractiveProductDetail from "./InteractiveProductDetail";
 

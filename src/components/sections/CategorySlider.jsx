@@ -11,7 +11,7 @@ import {
   CategorySliderNavigation,
   CategorySliderCTA
 } from "./category-slider/components";
-import { categories } from "./category-slider/data/categories";
+import { sliderCategories } from "@/data/categories";
 
 // Animation variants matching ProductInfo
 const fadeInUp = {
@@ -102,7 +102,7 @@ export default function CategorySlider() {
               }}
               className="pb-12"
             >
-              {categories.map((category, index) => (
+              {sliderCategories.map((category, index) => (
                 <SwiperSlide key={index}>
                   <motion.div
                     variants={scaleIn}
