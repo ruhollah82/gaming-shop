@@ -15,7 +15,7 @@ const SwiperSlide = dynamic(
   { ssr: false }
 );
 
-import DiscountCollectionProductCard from "./DiscountCollectionProductCard";
+import { ProductCard } from "@/components/ui";
 
 const swiperBreakpoints = {
   320: { slidesPerView: 1 },
@@ -40,7 +40,7 @@ export default function DiscountCollectionCarousel({ products }) {
     >
       {products.map((product) => (
         <SwiperSlide key={product.id}>
-          <DiscountCollectionProductCard product={product} />
+          <ProductCard product={product} variant="collection" />
         </SwiperSlide>
       ))}
     </Swiper>

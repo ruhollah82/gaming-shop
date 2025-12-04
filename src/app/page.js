@@ -1,6 +1,5 @@
 import { Banner, FreeExpressMarquee, IconBoxSection, CategorySlider, TestimonialSlider, BrandsGrid, StoreLocationSection } from "@/components/sections";
 import DiscountCollection from "@/features/home/components/DiscountCollection";
-import ProductCard from "@/features/product/components/ProductCard";
 
 export default function HomePage() {
   return (
@@ -12,7 +11,6 @@ export default function HomePage() {
       <IconBoxSection />
       <CategorySlider />
       <DiscountCollection />
-      <ProductCard />
       <div className="px-36 py-24 bg-white">
         <TestimonialSlider />
       </div>

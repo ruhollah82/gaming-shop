@@ -1,5 +1,6 @@
 // UI Components
 export { default as PaymentSecurityCard } from './Card/PaymentSecurityCard';
+export { default as ProductCard } from './ProductCard';
 
 // Modal Components
 export * from './Modal';

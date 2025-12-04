@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Dropdown, Divider } from "antd";
 import { Icon } from "@iconify/react";
-import ProductCard from "./ProductCard";
+import { ProductCard } from "@/components/ui";
 import FilterDrawer from "./FilterDrawer";
 import { LayoutSwitcher } from "@/components/ui";
 import { products } from "@/data/products";
@@ -126,7 +126,7 @@ export default function CollectionSection() {
 
         <div className={`grid ${getGridColumns()} gap-6`}>
           {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} variant="collection" />
           ))}
         </div>
       </div>
