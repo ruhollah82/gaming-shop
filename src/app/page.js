@@ -11,7 +11,7 @@ export default function HomePage() {
       <IconBoxSection />
       <CategorySlider />
       <DiscountCollection />
-      <div className="px-36 py-24 bg-white">
+      <div className="px-4 sm:px-8 lg:px-12 xl:px-36 py-8 sm:py-12 lg:py-16 xl:py-24 bg-white">
         <TestimonialSlider />
       </div>
       <BrandsGrid />

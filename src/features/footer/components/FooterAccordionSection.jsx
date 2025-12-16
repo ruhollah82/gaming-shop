@@ -38,20 +38,20 @@ export default function FooterAccordionSection({
   const renderNewsletter = () => (
     <div className="space-y-4 text-sm">
       <p className="text-gray-400">{newsletter.description}</p>
-      <form method="post" action={newsletter.formAction} className="relative z-10">
-        <div className="flex w-full border border-[#3a3a3a] bg-[#3a3a3a] rounded-md overflow-hidden max-w-md">
+      <form method="post" action={newsletter.formAction}>
+        <div className="flex w-full border border-[#3a3a3a] bg-[#3a3a3a] rounded-md overflow-hidden max-w-md p-1">
           <input
             type="email"
             name="contact[email]"
             placeholder="Enter email address"
-            className="flex-1 px-4 py-3 text-base text-[#e0e0e0] placeholder-[#9d9d9d] bg-transparent focus:outline-none"
+            className="flex-1 px-3 py-2 text-base text-[#e0e0e0] placeholder-[#9d9d9d] bg-transparent focus:outline-none focus:ring-2 focus:ring-white/20"
             required
           />
           <button
             type="submit"
-            className="px-6 py-3 m-2 bg-black text-white font-medium text-base hover:bg-neutral-900 transition-colors"
+            className="px-4 py-2 bg-white text-black font-medium text-sm hover:bg-gray-100 transition-colors whitespace-nowrap rounded"
           >
-            Subscribe ↗
+            Subscribe
           </button>
         </div>
       </form>

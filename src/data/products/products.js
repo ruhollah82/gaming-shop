@@ -23,10 +23,10 @@ export const products = [
       "//ecomus-2-2.myshopify.com/cdn/shop/files/image19.png?v=1744880554&width=628",
     hoverImage:
       "//ecomus-2-2.myshopify.com/cdn/shop/files/image18.png?v=1744880554&width=628",
-    isSoldOut: true,
+    isSoldOut: false,
     discountPercent: 12,
     category: "Gaming",
-    inStock: false,
+    inStock: true,
     badges: ["on_sale", "sold_out"],
   },
   {
@@ -38,7 +38,7 @@ export const products = [
       "//ecomus-2-2.myshopify.com/cdn/shop/files/product1.png?v=1744880484&width=628",
     hoverImage:
       "//ecomus-2-2.myshopify.com/cdn/shop/files/image6.png?v=1744880484&width=628",
-    isSoldOut: true,
+    isSoldOut: false,
     discountPercent: 30,
     category: "Gaming",
     inStock: false,

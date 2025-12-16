@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Icon } from "@iconify/react";
 import CollectionProductCardActions from "@/features/collections/components/product-card/CollectionProductCardActions";
 import CollectionProductVariantSelector from "@/features/collections/components/product-card/CollectionProductVariantSelector";
 
@@ -30,7 +31,7 @@ const ProductCard = ({
     hoverImage,
     images = {},
     badges = [],
-    variants = [],
+    variants: productVariants = [],
     colors = [],
   } = product;
 
@@ -188,9 +189,9 @@ const ProductCard = ({
         )}
 
         {/* Variants selector (only for collection/default variants) */}
-        {showVariants && variants.length > 0 && (variant === "collection" || variant === "default") && (
+        {showVariants && productVariants.length > 0 && (variant === "collection" || variant === "default") && (
           <CollectionProductVariantSelector
-            variants={variants}
+            variants={productVariants}
             disabled={isSoldOut}
           />
         )}
