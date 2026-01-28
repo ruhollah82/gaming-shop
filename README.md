@@ -191,15 +191,3 @@ npm start
   - Centralize colors, typography, and spacing for a cohesive look.
 
 ---
-
-### Notes & Limitations
-
-- **No real checkout/cart** is implemented; this is meant as a **UI/UX demo** or a starting point.
-- Authentication, user accounts, and order history are **not** included by default.
-- You are free to adapt, extend, and integrate this project into a full‑stack commerce solution.
-
----
-
-### License
-
-If this repository is public, please specify your preferred license here (for example, MIT). If it is private, you can omit this section or add your own internal usage guidelines.
