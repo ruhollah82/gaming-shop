@@ -1,8 +1,11 @@
 import DiscountCollectionCountdown from "./discount-collection/DiscountCollectionCountdown";
 import DiscountCollectionCarousel from "./discount-collection/DiscountCollectionCarousel";
-import { products } from "@/data";
+import { getProducts } from "@/lib/api";
 
-export default function DiscountCollection() {
+export default async function DiscountCollection() {
+  // Fetch products from API
+  const products = await getProducts();
+
   return (
     <section className="py-16 bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
       <div className="container mx-auto px-4">
