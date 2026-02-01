@@ -9,9 +9,10 @@ import {
   CategoryCard,
   CategorySliderHeader,
   CategorySliderNavigation,
-  CategorySliderCTA
+  CategorySliderCTA,
 } from "./category-slider/components";
-import { sliderCategories } from "@/data/categories";
+import { getSliderCategories } from "@/lib/api";
+import { useState, useEffect } from "react";
 
 // Animation variants matching ProductInfo
 const fadeInUp = {
@@ -42,7 +43,50 @@ const staggerContainer = {
   },
 };
 
-export default function CategorySlider() {
+export default function CategorySlider({ initialCategories }) {
+  const [sliderCategories, setSliderCategories] = useState(
+    initialCategories || [],
+  );
+  const [loading, setLoading] = useState(!initialCategories);
+
+  useEffect(() => {
+    if (!initialCategories) {
+      const fetchCategories = async () => {
+        try {
+          const categories = await getSliderCategories();
+          setSliderCategories(categories);
+        } catch (error) {
+          console.error("Failed to fetch slider categories:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchCategories();
+    } else {
+      setLoading(false);
+    }
+  }, [initialCategories]);
+
+  if (loading) {
+    return (
+      <section className="py-8 bg-gradient-to-br from-white to-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 shadow-xl">
+            <div className="animate-pulse">
+              <div className="h-8 bg-gray-700 rounded w-1/3 mb-8"></div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="bg-gray-700 rounded-xl h-32"></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <>
       {/* Header Section */}
@@ -103,7 +147,7 @@ export default function CategorySlider() {
               className="pb-12"
             >
               {sliderCategories.map((category, index) => (
-                <SwiperSlide key={index}>
+                <SwiperSlide key={category.id}>
                   <motion.div
                     variants={scaleIn}
                     transition={{ delay: index * 0.1 }}
@@ -125,4 +169,3 @@ export default function CategorySlider() {
     </>
   );
 }
-
