@@ -1,16 +1,4 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-
-export default function MapSection() {
-  const mapRef = useRef(null);
-
-  // Initialize map or any interactions if needed
-  useEffect(() => {
-    // You can add any map initialization logic here
-    // For example, if using Google Maps JavaScript API
-  }, []);
-
+export default async function MapSection() {
   return (
     <section className="pt-16 bg-white">
       <div className="relative w-full">
