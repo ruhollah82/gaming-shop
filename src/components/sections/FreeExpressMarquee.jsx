@@ -1,36 +1,29 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ShippingIcon } from "@/components/ui";
-import { marqueeItems, marqueeConfig } from "@/data/ui";
+import { getMarquee } from "@/lib/api";
 
-const FreeExpressMarquee = () => {
-  const repeatedItems = Array(marqueeConfig.repeat).fill(marqueeItems).flat();
+const FreeExpressMarquee = async () => {
+  // Fetch marquee data from API
+  const marqueeData = await getMarquee();
+  const repeatedItems = Array(marqueeData.config.repeat)
+    .fill(marqueeData.items)
+    .flat();
 
   return (
     <div
       className="relative overflow-hidden p-[30px]"
-      style={{ backgroundColor: "rgb(153,20,242)" }}
+      style={{ backgroundColor: marqueeData.config.backgroundColor }}
     >
-      <motion.div
-        className="flex whitespace-nowrap justify-between"
-        animate={{ x: ["0%", "-100%"] }}
-        transition={{
-          repeat: Infinity,
-          ease: "linear",
-          duration: 10,
-        }}
-      >
+      <div className="flex whitespace-nowrap justify-between animate-marquee">
         {repeatedItems.map((text, index) => (
           <div
             key={index}
-            className="flex items-center justify-between gap-5 mx-8 text-white text-lg font-medium py-4"
+            className="flex items-center justify-between gap-5 mx-8 text-white text-lg font-medium py-4 flex-shrink-0"
           >
             <ShippingIcon />
             <p>{text}</p>
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };
