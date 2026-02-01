@@ -1,14 +1,7 @@
-import { motion } from "framer-motion";
+"use client";
 
-// Animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 const CategorySliderCTA = ({
   title = "Can't Find What You're Looking For?",
@@ -21,9 +14,8 @@ const CategorySliderCTA = ({
 }) => {
   return (
     <motion.div
-      variants={fadeInUp}
-      initial="hidden"
-      animate="visible"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6 }}
       className={className}
     >
@@ -35,22 +27,28 @@ const CategorySliderCTA = ({
           {subtitle}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <motion.a
-            href={primaryButtonLink}
-            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all"
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {primaryButtonText}
-          </motion.a>
-          <motion.a
-            href={secondaryButtonLink}
-            className="px-8 py-4 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white rounded-2xl font-bold transition-all"
+            <Link
+              href={primaryButtonLink}
+              className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all"
+            >
+              {primaryButtonText}
+            </Link>
+          </motion.div>
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {secondaryButtonText}
-          </motion.a>
+            <Link
+              href={secondaryButtonLink}
+              className="inline-block px-8 py-4 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white rounded-2xl font-bold transition-all"
+            >
+              {secondaryButtonText}
+            </Link>
+          </motion.div>
         </div>
       </div>
     </motion.div>
