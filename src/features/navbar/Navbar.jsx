@@ -6,7 +6,7 @@ import NavbarMobileSearch from "./components/NavbarMobileSearch";
 const logoSrc =
   "//ecomus-2-2.myshopify.com/cdn/shop/files/logo_white.svg?v=1744703286&width=272";
 
-export default function Header() {
+export default async function Header() {
   const categories = [
     {
       name: "Setup Gear",

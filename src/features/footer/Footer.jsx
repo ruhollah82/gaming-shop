@@ -31,7 +31,7 @@ const newsletterInfo = {
   language: "English",
 };
 
-export default function Footer() {
+export default async function Footer() {
   return (
     <footer className="bg-black text-white">
       <div className="border-b border-gray-700 py-10">
