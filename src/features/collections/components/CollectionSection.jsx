@@ -1,15 +1,23 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Row, Col, Card, Button, Dropdown, Divider } from "antd";
-import { Icon } from "@iconify/react";
-import { ProductCard } from "@/components/ui";
+import { getProducts } from "@/lib/api";
 import FilterDrawer from "./FilterDrawer";
-import { LayoutSwitcher } from "@/components/ui";
-import { products } from "@/data/products";
-import { sortOptions } from "@/data/config";
+import CollectionControls from "./CollectionControls";
+import CollectionGrid from "./CollectionGrid";
 
-const { Meta } = Card;
+const getGridColumns = (selectedLayout) => {
+  const map = {
+    0: "grid-cols-1",
+    1: "grid-cols-1",
+    2: "grid-cols-2",
+    3: "grid-cols-3",
+    4: "grid-cols-4",
+    5: "grid-cols-5",
+    6: "grid-cols-6",
+  };
+  return map[selectedLayout] || "grid-cols-5";
+};
 
 export default function CollectionSection() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -18,14 +26,32 @@ export default function CollectionSection() {
   const [priceRange, setPriceRange] = useState([0, 300]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedAvailability, setSelectedAvailability] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const productsData = await getProducts();
+        setProducts(productsData);
+        setFilteredProducts(productsData);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
     let filtered = [...products];
 
     // Price filter
     filtered = filtered.filter(
-      (p) => p.price >= priceRange[0] && p.price <= priceRange[1]
+      (p) => p.price >= priceRange[0] && p.price <= priceRange[1],
     );
 
     // Availability
@@ -43,7 +69,7 @@ export default function CollectionSection() {
     // Category
     if (selectedCategories.length > 0) {
       filtered = filtered.filter((p) =>
-        selectedCategories.includes(p.category)
+        selectedCategories.includes(p.category),
       );
     }
 
@@ -64,71 +90,45 @@ export default function CollectionSection() {
     });
 
     setFilteredProducts(filtered);
-  }, [sortBy, priceRange, selectedCategories, selectedAvailability]);
+  }, [products, sortBy, priceRange, selectedCategories, selectedAvailability]);
 
-  const handleLayoutChange = (layout) => setSelectedLayout(layout);
-
-  const getGridColumns = () => {
-    const map = {
-      0: "grid-cols-1",
-      1: "grid-cols-1",
-      2: "grid-cols-2",
-      3: "grid-cols-3",
-      4: "grid-cols-4",
-      5: "grid-cols-5",
-      6: "grid-cols-6",
-    };
-    return map[selectedLayout] || "grid-cols-5";
-  };
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-[30px] pb-[70px]">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="animate-pulse">
+            <div className="h-12 bg-gray-200 rounded w-1/3 mb-8"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="bg-white rounded-xl p-4 shadow-sm">
+                  <div className="bg-gray-200 rounded-lg h-48 mb-4"></div>
+                  <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-[30px] pb-[70px]">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Shop Controls */}
-        <div className="mb-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <button
-              className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors  text-black"
-              onClick={() => setIsFilterOpen(true)}
-            >
-              <Icon icon="mi:filter" className="w-5 h-5" />
-              <span>Filter</span>
-            </button>
+        <CollectionControls
+          isFilterOpen={isFilterOpen}
+          setIsFilterOpen={setIsFilterOpen}
+          selectedLayout={selectedLayout}
+          onLayoutChange={setSelectedLayout}
+          sortBy={sortBy}
+          onSortChange={setSortBy}
+        />
 
-            <LayoutSwitcher
-              selectedLayout={selectedLayout}
-              onLayoutChange={handleLayoutChange}
-            />
-
-            <div>
-              <Dropdown
-                menu={{
-                  items: sortOptions.map((opt) => ({
-                    key: opt.value,
-                    label: opt.label,
-                  })),
-                  onClick: ({ key }) => setSortBy(key),
-                  selectedKeys: [sortBy],
-                }}
-                trigger={["click"]}
-              >
-                <Button className="flex items-center justify-between min-w-[140px]">
-                  <span className="hidden md:inline-block">
-                    {sortOptions.find((opt) => opt.value === sortBy)?.label}
-                  </span>
-                  <span className="inline-block md:hidden">Sort</span>
-                  <Icon icon="mdi:chevron-down" className="ml-2 w-4 h-4" />
-                </Button>
-              </Dropdown>
-            </div>
-          </div>
-        </div>
-
-        <div className={`grid ${getGridColumns()} gap-6`}>
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} variant="collection" />
-          ))}
-        </div>
+        <CollectionGrid
+          products={filteredProducts}
+          gridColumns={getGridColumns(selectedLayout)}
+        />
       </div>
 
       <FilterDrawer
