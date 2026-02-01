@@ -1,13 +1,14 @@
-"use client";
-
 // components/TestimonialsSection.jsx
 import TestimonialsHeader from "./TestimonialsHeader";
 import StatsSection from "./StatsSection";
 import TestimonialsSlider from "./TestimonialsSlider";
 import TestimonialsCTA from "./TestimonialsCTA";
-import { testimonials } from "@/data/testimonials";
+import { getTestimonials } from "@/lib/api";
 
-export default function TestimonialsSection() {
+export default async function TestimonialsSection() {
+  // Fetch data on server side
+  const testimonials = await getTestimonials();
+
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-purple-50/30 relative overflow-hidden">
       {/* Background Elements */}
