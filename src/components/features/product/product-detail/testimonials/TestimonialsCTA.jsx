@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { fadeInUp } from "../shared/animations";
 
@@ -18,12 +20,10 @@ const TestimonialsCTA = () => {
         </div>
 
         <div className="relative z-10">
-          <h3 className="text-3xl font-bold mb-4">
-            Join Our Gaming Community
-          </h3>
+          <h3 className="text-3xl font-bold mb-4">Join Our Gaming Community</h3>
           <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-            Experience the difference for yourself. Join thousands of gamers
-            who have already elevated their setup.
+            Experience the difference for yourself. Join thousands of gamers who
+            have already elevated their setup.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

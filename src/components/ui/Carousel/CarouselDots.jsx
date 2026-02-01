@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 
 const CarouselDots = ({
@@ -7,7 +9,7 @@ const CarouselDots = ({
   className = "flex justify-center mt-10 space-x-3",
   dotClassName = "relative w-3 h-3 rounded-full transition-all duration-300",
   activeDotClassName = "bg-gradient-to-r from-blue-500 to-purple-600",
-  inactiveDotClassName = "bg-gray-300 hover:bg-gray-400"
+  inactiveDotClassName = "bg-gray-300 hover:bg-gray-400",
 }) => {
   return (
     <div className={className}>
