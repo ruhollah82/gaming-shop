@@ -1,8 +1,6 @@
-"use client";
-
 import BannerItem from "./BannerItem";
 
-const GameStoreBanner = () => {
+const GameStoreBanner = async () => {
   return (
     <div className="relative flex flex-col md:flex-row justify-center items-center gap-5 px-12 py-24  overflow-hidden">
       {/* 🖼 Background Image */}
