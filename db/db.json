@@ -1,0 +1,435 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "SONY DualSense Wireless Controller",
+      "price": 100.0,
+      "comparePrice": null,
+      "image": "//ecomus-2-2.myshopify.com/cdn/shop/files/product_8ed7d0c5-2b50-4c03-bf7e-3ce9e5bef13f.png?v=1744880869&width=628",
+      "hoverImage": "//ecomus-2-2.myshopify.com/cdn/shop/files/image4.png?v=1744880869&width=628",
+      "isSoldOut": true,
+      "discountPercent": null,
+      "category": "Gaming",
+      "inStock": false,
+      "badges": ["sold_out"],
+      "handle": "sony-dualsense-wireless-controller"
+    },
+    {
+      "id": "2",
+      "title": "SAMSUNG Odyssey G4",
+      "price": 300.0,
+      "comparePrice": 339.0,
+      "image": "//ecomus-2-2.myshopify.com/cdn/shop/files/image19.png?v=1744880554&width=628",
+      "hoverImage": "//ecomus-2-2.myshopify.com/cdn/shop/files/image18.png?v=1744880554&width=628",
+      "isSoldOut": false,
+      "discountPercent": 12,
+      "category": "Gaming",
+      "inStock": true,
+      "badges": ["on_sale", "sold_out"],
+      "handle": "samsung-odyssey-g4"
+    },
+    {
+      "id": "3",
+      "title": "RAZER Sphex V3",
+      "price": 35.0,
+      "comparePrice": 50.0,
+      "image": "//ecomus-2-2.myshopify.com/cdn/shop/files/product1.png?v=1744880484&width=628",
+      "hoverImage": "//ecomus-2-2.myshopify.com/cdn/shop/files/image6.png?v=1744880484&width=628",
+      "isSoldOut": false,
+      "discountPercent": 30,
+      "category": "Gaming",
+      "inStock": false,
+      "badges": ["on_sale", "sold_out"],
+      "handle": "razer-sphex-v3"
+    },
+    {
+      "id": "4",
+      "title": "Logitech G29 Driving Force Wired Controller",
+      "price": 85.0,
+      "comparePrice": 95.0,
+      "image": "//ecomus-2-2.myshopify.com/cdn/shop/files/image13.png?v=1744798206&width=628",
+      "hoverImage": "//ecomus-2-2.myshopify.com/cdn/shop/files/image12.png?v=1744798206&width=628",
+      "isSoldOut": false,
+      "discountPercent": 11,
+      "category": "Gaming",
+      "inStock": true,
+      "badges": ["on_sale"],
+      "handle": "logitech-g29-driving-force",
+      "variants": [
+        {
+          "id": "black",
+          "color": "#000000",
+          "colorName": "Black",
+          "image": "//ecomus-2-2.myshopify.com/cdn/shop/files/image13.png?v=1744798206&width=628"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "HyperX SoloCast",
+      "price": 135.0,
+      "comparePrice": null,
+      "image": "//ecomus-2-2.myshopify.com/cdn/shop/files/image24.png?v=1744880147&width=628",
+      "hoverImage": "//ecomus-2-2.myshopify.com/cdn/shop/files/image8.png?v=1744880147&width=628",
+      "isSoldOut": false,
+      "discountPercent": null,
+      "category": "Gaming",
+      "inStock": true,
+      "badges": [],
+      "handle": "hyperx-solocast",
+      "variants": [
+        {
+          "id": "white",
+          "color": "#FFFFFF",
+          "colorName": "White",
+          "image": "//ecomus-2-2.myshopify.com/cdn/shop/files/image7.png?v=1744880147&width=628"
+        },
+        {
+          "id": "black",
+          "color": "#000000",
+          "colorName": "Black",
+          "image": "//ecomus-2-2.myshopify.com/cdn/shop/files/image24.png?v=1744880147&width=628"
+        }
+      ]
+    }
+  ],
+  "sliderCategories": [
+    {
+      "id": 1,
+      "title": "Controllers",
+      "count": 5,
+      "img": "https://ecomus-2-2.myshopify.com/cdn/shop/files/Group_1000001825_af736a90-cdb8-4284-9547-5a5a4f8acc82.webp?v=1750064375",
+      "link": "/collections/gaming",
+      "gradient": "from-blue-500 to-blue-600",
+      "icon": "mdi:gamepad-variant"
+    },
+    {
+      "id": 2,
+      "title": "Keyboards",
+      "count": 5,
+      "img": "https://ecomus-2-2.myshopify.com/cdn/shop/files/Group_1000001826_19b2a88f-ea2f-489d-a8d2-f0f032a33b14_1.jpg?v=1744881975",
+      "link": "/collections/keyboards",
+      "gradient": "from-purple-500 to-purple-600",
+      "icon": "mdi:keyboard"
+    },
+    {
+      "id": 3,
+      "title": "Mice",
+      "count": 5,
+      "img": "https://ecomus-2-2.myshopify.com/cdn/shop/files/Group_1000001827_469928dd-dc0b-44e8-8346-1eaf8ce6c9cc.webp?v=1744882142",
+      "link": "/collections/mice",
+      "gradient": "from-green-500 to-green-600",
+      "icon": "mdi:mouse"
+    },
+    {
+      "id": 4,
+      "title": "Headsets",
+      "count": 5,
+      "img": "https://ecomus-2-2.myshopify.com/cdn/shop/files/Group_1000001828_c83bf841-4770-4163-92c5-2c01943be2ae.webp?v=1744882252",
+      "link": "/collections/headsets",
+      "gradient": "from-orange-500 to-orange-600",
+      "icon": "mdi:headset"
+    },
+    {
+      "id": 5,
+      "title": "Flight Simulation",
+      "count": 5,
+      "img": "https://ecomus-2-2.myshopify.com/cdn/shop/files/Group_1000001829_e564fa55-a22c-41a9-911a-5a502039876e.webp?v=1744882310",
+      "link": "/collections/flight",
+      "gradient": "from-red-500 to-red-600",
+      "icon": "mdi:airplane"
+    },
+    {
+      "id": 6,
+      "title": "Race Simulation",
+      "count": 5,
+      "img": "https://ecomus-2-2.myshopify.com/cdn/shop/files/Group_1000001830_df77d224-e4ff-4401-a38e-f5684872b9fd.webp?v=1744882421",
+      "link": "/collections/race",
+      "gradient": "from-indigo-500 to-indigo-600",
+      "icon": "mdi:steering"
+    },
+    {
+      "id": 7,
+      "title": "Monitor",
+      "count": 5,
+      "img": "https://ecomus-2-2.myshopify.com/cdn/shop/files/Group_10000018257.jpg?v=1744882547",
+      "link": "/collections/monitor",
+      "gradient": "from-cyan-500 to-cyan-600",
+      "icon": "mdi:monitor"
+    }
+  ],
+  "collectionCategories": [
+    { "id": 1, "name": "Adapters" },
+    { "id": 2, "name": "Art decor" },
+    { "id": 3, "name": "Art installation" },
+    { "id": 4, "name": "Automated Collection" },
+    { "id": 5, "name": "Book store" },
+    { "id": 6, "name": "Cables" },
+    { "id": 7, "name": "Docks and hubs" },
+    { "id": 8, "name": "Electronic Accessories" },
+    { "id": 9, "name": "Eyeglasses" },
+    { "id": 10, "name": "Footwear" },
+    { "id": 11, "name": "Fry" },
+    { "id": 12, "name": "Gaming" },
+    { "id": 13, "name": "Handbag" },
+    { "id": 14, "name": "Handbag 2" },
+    { "id": 15, "name": "Headphone" },
+    { "id": 16, "name": "Headphone 1" },
+    { "id": 17, "name": "High Technology" },
+    { "id": 18, "name": "Home page" },
+    { "id": 19, "name": "Hydrogen" },
+    { "id": 20, "name": "Indoor Plants" },
+    { "id": 21, "name": "Iphone Case" },
+    { "id": 22, "name": "Jewelry" },
+    { "id": 23, "name": "Jewelry 2" },
+    { "id": 24, "name": "Keyboards" },
+    { "id": 25, "name": "Kitchen" },
+    { "id": 26, "name": "New Arrival" },
+    { "id": 27, "name": "Ornamental Plants" },
+    { "id": 28, "name": "Phone case" },
+    { "id": 29, "name": "Romance" },
+    { "id": 30, "name": "Screen protection" },
+    { "id": 31, "name": "Setup Gear" },
+    { "id": 32, "name": "Setup Gear 2" },
+    { "id": 33, "name": "Sneakers" },
+    { "id": 34, "name": "Sneakers 2" },
+    { "id": 35, "name": "Sock" },
+    { "id": 36, "name": "Sock women" },
+    { "id": 37, "name": "Sunglasses" },
+    { "id": 38, "name": "Tee" },
+    { "id": 39, "name": "Tee 2" }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Loretta",
+      "content": "Top-tier performance without the top-tier price. Elegant, durable, and built for serious play.",
+      "rating": 5,
+      "role": "Professional Gamer",
+      "avatar": "👩‍💻",
+      "verified": true,
+      "product": "Pro Gaming Mouse"
+    },
+    {
+      "id": 2,
+      "name": "Sandra",
+      "content": "Looks premium, feels premium — but your wallet won't even flinch. A hidden gem for any setup.",
+      "rating": 5,
+      "role": "Streamer",
+      "avatar": "🎮",
+      "verified": true,
+      "product": "Mechanical Keyboard"
+    },
+    {
+      "id": 3,
+      "name": "Marcus",
+      "content": "Discreet design meets hardcore functionality. This gear punches way above its price.",
+      "rating": 5,
+      "role": "Esports Coach",
+      "avatar": "🏆",
+      "verified": true,
+      "product": "Gaming Headset"
+    },
+    {
+      "id": 4,
+      "name": "Jessica",
+      "content": "Clean aesthetics, smooth handling, and zero compromises. A smart pick over overpriced brands.",
+      "rating": 5,
+      "role": "Content Creator",
+      "avatar": "✨",
+      "verified": true,
+      "product": "RGB Mousepad"
+    },
+    {
+      "id": 5,
+      "name": "Alex",
+      "content": "Elegant in form, brutal in performance. Gear that elevates your game without draining your budget.",
+      "rating": 5,
+      "role": "Game Developer",
+      "avatar": "👨‍💻",
+      "verified": true,
+      "product": "Wireless Controller"
+    }
+  ],
+  "brands": [
+    {
+      "id": 1,
+      "src": "/images/brands/Group_1000001831-2.webp",
+      "alt": "Brand 1",
+      "width": 304,
+      "height": 126
+    },
+    {
+      "id": 2,
+      "src": "/images/brands/Group_1000001831.webp",
+      "alt": "Brand 2",
+      "width": 354,
+      "height": 126
+    },
+    {
+      "id": 3,
+      "src": "/images/brands/Group_10000018313.webp",
+      "alt": "Brand 3",
+      "width": 304,
+      "height": 126
+    },
+    {
+      "id": 4,
+      "src": "/images/brands/Group_10000018314.webp",
+      "alt": "Brand 4",
+      "width": 304,
+      "height": 126
+    },
+    {
+      "id": 5,
+      "src": "/images/brands/Group_10000018315.webp",
+      "alt": "Brand 5",
+      "width": 304,
+      "height": 126
+    },
+    {
+      "id": 6,
+      "src": "/images/brands/Group_10000018316.webp",
+      "alt": "Brand 6",
+      "width": 304,
+      "height": 126
+    }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "icon": "mdi:truck-fast",
+      "title": "Free Shipping",
+      "description": "Free express shipping worldwide on orders over $50",
+      "gradient": "from-blue-500 to-cyan-500",
+      "delay": 0.1
+    },
+    {
+      "id": 2,
+      "icon": "mdi:credit-card-multiple",
+      "title": "Flexible Payment",
+      "description": "Pay with multiple credit cards or installment plans",
+      "gradient": "from-purple-500 to-pink-500",
+      "delay": 0.2
+    },
+    {
+      "id": 3,
+      "icon": "mdi:refresh-circle",
+      "title": "Easy Returns",
+      "description": "30-day money back guarantee with free returns",
+      "gradient": "from-green-500 to-emerald-500",
+      "delay": 0.3
+    },
+    {
+      "id": 4,
+      "icon": "mdi:headset",
+      "title": "Premium Support",
+      "description": "24/7 customer support with expert assistance",
+      "gradient": "from-orange-500 to-red-500",
+      "delay": 0.4
+    }
+  ],
+  "faq": [
+    {
+      "id": 1,
+      "question": "Precision Meets Affordability",
+      "answer": "Experience pinpoint accuracy with a sensor that rivals top-tier brands — all at a price that doesn't break your budget.",
+      "icon": "mdi:target"
+    },
+    {
+      "id": 2,
+      "question": "Minimal Design, Maximum Impact",
+      "answer": "Crafted with a sleek, no-nonsense look, this gear delivers elite-level performance without flashy distractions.",
+      "icon": "mdi:palette-outline"
+    },
+    {
+      "id": 3,
+      "question": "Built to Last, Priced to Win",
+      "answer": "Durable switches, solid build quality, and premium materials — for gamers who grind hard without overpaying.",
+      "icon": "mdi:shield-check-outline"
+    },
+    {
+      "id": 4,
+      "question": "Comfort That Keeps You Playing",
+      "answer": "Ergonomic design and soft-touch finishes ensure long sessions stay comfortable from start to finish.",
+      "icon": "mdi:arm-flex-outline"
+    },
+    {
+      "id": 5,
+      "question": "Fast & Reliable Shipping",
+      "answer": "Free express shipping on orders over $50. Most orders delivered within 3-5 business days.",
+      "icon": "mdi:truck-fast-outline"
+    },
+    {
+      "id": 6,
+      "question": "30-Day Money Back Guarantee",
+      "answer": "Not satisfied? Return within 30 days for a full refund, no questions asked.",
+      "icon": "mdi:currency-usd-circle"
+    }
+  ],
+  "sortOptions": [
+    { "value": "manual", "label": "Featured" },
+    { "value": "best-selling", "label": "Best selling" },
+    { "value": "title-ascending", "label": "Alphabetically, A-Z" },
+    { "value": "title-descending", "label": "Alphabetically, Z-A" },
+    { "value": "price-ascending", "label": "Price, low to high" },
+    { "value": "price-descending", "label": "Price, high to low" },
+    { "value": "created-ascending", "label": "Date, old to new" },
+    { "value": "created-descending", "label": "Date, new to old" }
+  ],
+  "marquee": {
+    "items": ["Free express shipping worldwide"],
+    "config": {
+      "repeat": 10,
+      "backgroundColor": "rgb(153,20,242)"
+    }
+  },
+  "stats": [
+    { "id": 1, "value": "10K+", "label": "Happy Gamers", "icon": "mdi:account-group" },
+    { "id": 2, "value": "4.9/5", "label": "Average Rating", "icon": "mdi:star" },
+    { "id": 3, "value": "98%", "label": "Recommend", "icon": "mdi:thumb-up" },
+    { "id": 4, "value": "24/7", "label": "Support", "icon": "mdi:headset" }
+  ],
+  "imageFeatures": [
+    {
+      "id": 1,
+      "icon": "mdi:rotate-360",
+      "title": "360° View",
+      "description": "Interactive product rotation"
+    },
+    {
+      "id": 2,
+      "icon": "mdi:zoom-in",
+      "title": "Zoom & Pan",
+      "description": "See every detail clearly"
+    },
+    {
+      "id": 3,
+      "icon": "mdi:video-outline",
+      "title": "Video Tour",
+      "description": "Watch product in action"
+    }
+  ],
+  "layoutOptions": {
+    "mobile": [
+      { "value": 0, "label": "List View" },
+      { "value": 1, "label": "Grid 1" },
+      { "value": 2, "label": "Grid 2" }
+    ],
+    "tablet": [
+      { "value": 0, "label": "List View" },
+      { "value": 2, "label": "Grid 2" },
+      { "value": 3, "label": "Grid 3" },
+      { "value": 4, "label": "Grid 4" }
+    ],
+    "desktop": [
+      { "value": 0, "label": "List View" },
+      { "value": 2, "label": "Grid 2" },
+      { "value": 3, "label": "Grid 3" },
+      { "value": 4, "label": "Grid 4" },
+      { "value": 5, "label": "Grid 5" },
+      { "value": 6, "label": "Grid 6" }
+    ]
+  }
+}
+
