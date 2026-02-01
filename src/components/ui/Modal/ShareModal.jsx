@@ -3,42 +3,57 @@
 
 import { Modal, Button, Divider, Input } from "antd";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 export default function ShareModal({ open, onClose, product }) {
   const [copied, setCopied] = useState(false);
+  const [currentUrl, setCurrentUrl] = useState("");
 
-  const shareUrls = {
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-      window.location.href
-    )}`,
-    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-      product.title
-    )}&url=${encodeURIComponent(window.location.href)}`,
-    pinterest: `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(
-      window.location.href
-    )}&media=${encodeURIComponent(
-      product.image
-    )}&description=${encodeURIComponent(product.title)}`,
-    whatsapp: `https://wa.me/?text=${encodeURIComponent(
-      `${product.title} ${window.location.href}`
-    )}`,
-    telegram: `https://t.me/share/url?url=${encodeURIComponent(
-      window.location.href
-    )}&text=${encodeURIComponent(product.title)}`,
-    email: `mailto:?subject=${encodeURIComponent(
-      product.title
-    )}&body=${encodeURIComponent(window.location.href)}`,
-  };
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+
+  const shareUrls = useMemo(() => {
+    if (!currentUrl) return {};
+    
+    return {
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        currentUrl
+      )}`,
+      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        product.title
+      )}&url=${encodeURIComponent(currentUrl)}`,
+      pinterest: `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(
+        currentUrl
+      )}&media=${encodeURIComponent(
+        product.image
+      )}&description=${encodeURIComponent(product.title)}`,
+      whatsapp: `https://wa.me/?text=${encodeURIComponent(
+        `${product.title} ${currentUrl}`
+      )}`,
+      telegram: `https://t.me/share/url?url=${encodeURIComponent(
+        currentUrl
+      )}&text=${encodeURIComponent(product.title)}`,
+      email: `mailto:?subject=${encodeURIComponent(
+        product.title
+      )}&body=${encodeURIComponent(currentUrl)}`,
+    };
+  }, [currentUrl, product.title, product.image]);
 
   const handleShare = (platform) => {
-    window.open(shareUrls[platform], "_blank", "noopener,noreferrer");
+    if (shareUrls[platform]) {
+      window.open(shareUrls[platform], "_blank", "noopener,noreferrer");
+    }
   };
 
   const copyLink = async () => {
-    await navigator.clipboard.writeText(window.location.href);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (typeof window !== "undefined" && navigator.clipboard) {
+      await navigator.clipboard.writeText(currentUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (
@@ -88,11 +103,11 @@ export default function ShareModal({ open, onClose, product }) {
 
         <div className="flex gap-2">
           <Input
-            value={typeof window !== "undefined" ? window.location.href : ""}
+            value={currentUrl}
             readOnly
             size="large"
           />
-          <Button onClick={copyLink} type="primary">
+          <Button onClick={copyLink} type="primary" disabled={!currentUrl}>
             {copied ? "Copied!" : "Copy"}
           </Button>
         </div>
