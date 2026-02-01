@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import { fadeInUp, scaleIn } from "../shared/animations";
@@ -25,8 +27,8 @@ const FaqHeader = () => {
       </h2>
 
       <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-        Everything you need to know about our products and services. Can't
-        find the answer you're looking for? Reach out to our support team.
+        Everything you need to know about our products and services. Can't find
+        the answer you're looking for? Reach out to our support team.
       </p>
     </motion.div>
   );

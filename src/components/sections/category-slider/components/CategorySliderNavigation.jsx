@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 
@@ -6,7 +8,7 @@ const CategorySliderNavigation = ({
   subtitle = "Browse our premium collection",
   prevButtonClass = "category-prev",
   nextButtonClass = "category-next",
-  className = "flex justify-between items-center mb-8 relative z-10"
+  className = "flex justify-between items-center mb-8 relative z-10",
 }) => {
   return (
     <div className={className}>
