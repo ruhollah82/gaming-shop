@@ -1,7 +1,7 @@
 // Interactive product detail component - handles state and user interactions
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { message } from "antd";
 import { motion } from "framer-motion";
@@ -10,6 +10,7 @@ import {
   ProductInfo,
 } from "@/components/features/product";
 import { AskQuestionModal, ShareModal } from "@/components/ui";
+import ProductBreadcrumb from "@/components/features/product/product-detail/shared/ProductBreadcrumb";
 
 export default function InteractiveProductDetail({ product }) {
   const router = useRouter();
@@ -68,15 +69,7 @@ export default function InteractiveProductDetail({ product }) {
   return (
     <>
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Breadcrumb */}
-        <nav className="mb-8">
-          <button
-            onClick={() => router.back()}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
-          >
-            ← Back to Products
-          </button>
-        </nav>
+        <ProductBreadcrumb />
 
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-12"

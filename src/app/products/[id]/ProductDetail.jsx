@@ -1,11 +1,16 @@
 // app/products/[id]/ProductDetail.jsx
-import { products } from "@/data/products";
+import { productAPI } from "@/lib/api/products";
 import { DeliveryInfoCard, CompareSection, FaqSection, TestimonialsSection } from "@/components/features/product";
 import InteractiveProductDetail from "./InteractiveProductDetail";
 
-export default function ProductDetail({ productId }) {
-  // Server-side data validation
-  const product = products.find((p) => p.id === productId);
+export default async function ProductDetail({ productId }) {
+  // Server-side data fetching from API
+  let product;
+  try {
+    product = await productAPI.getById(productId);
+  } catch (error) {
+    product = null;
+  }
 
   if (!product) {
     return (
