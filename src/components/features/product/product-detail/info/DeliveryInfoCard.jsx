@@ -1,7 +1,7 @@
 // components/product-detail/DeliveryInfoCard.jsx
 import { Icon } from "@iconify/react";
 
-export default function DeliveryInfoCard() {
+export default async function DeliveryInfoCard() {
   return (
     <div className="bg-white rounded-lg p-6 shadow-sm border">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

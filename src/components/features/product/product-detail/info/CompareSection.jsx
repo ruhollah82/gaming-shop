@@ -1,17 +1,9 @@
 // components/CompareSection.jsx
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function CompareSection() {
+export default async function CompareSection() {
   return (
-    <motion.section
-      className="relative w-full py-16 md:py-24 lg:py-32 overflow-hidden"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
+    <section className="relative w-full py-16 md:py-24 lg:py-32 overflow-hidden animate-fade-in">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
@@ -30,25 +22,15 @@ export default function CompareSection() {
           <div className="col-span-12 lg:col-span-12 flex justify-center">
             <div className="text-center px-4 lg:px-24">
               {/* Heading */}
-              <motion.h2
-                className="text-2xl md:text-4xl lg:text-5xl font-semibold text-white mb-4 md:mb-6 lg:mb-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-              >
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-white mb-4 md:mb-6 lg:mb-8 animate-slide-up-delay-1">
                 Compare with Others
-              </motion.h2>
+              </h2>
 
               {/* Spacer */}
               <div className="h-4 md:h-12 lg:h-16" />
 
               {/* Image */}
-              <motion.div
-                className="inline-block"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              >
+              <div className="inline-block animate-slide-up-delay-2">
                 <a href="#" className="block">
                   <Image
                     src="/images/productDetail/Group_904.webp"
@@ -60,11 +42,11 @@ export default function CompareSection() {
                     sizes="(max-width: 768px) 90vw, (max-width: 1200px) 80vw, 100vw"
                   />
                 </a>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
